@@ -1,0 +1,129 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+//-----------------//
+int user_data_ref();
+int gender();
+int payload();
+float result;
+//********************************//
+int main()
+{
+        user_data_ref();
+        gender();
+        payload();
+}
+//********************************//
+class user_data{
+protected:
+    float weight, height;
+    int age, feet, inch;
+
+public:
+    float male_bmr, female_bmr;
+    int user_data_F()
+    {
+        cout<<setw(20)<<"Find your BMR"<<endl<<setw(30)<<"by Harris Benedict's formula"<<endl<<endl;
+    cout<<"Enter your weight (kg) : ";
+        cin >> weight;
+    cout<<"Enter your age : ";
+        cin >> age;
+    cout<<"Enter your Height :"<<endl;
+    cout<<"Feet = ";
+        cin >> feet;
+    cout<<"Inches = ";
+        cin >> inch ;
+             height = ((feet*12) + inch) * 2.54;
+        //-------------bmr part-------------//
+
+             male_bmr = 66 + (13.7 * weight) + (5 * height) - (6.8 * age);
+
+             female_bmr = 655 + (9.6 * weight) + (1.8 * height) - (4.7 * age);
+    }
+};
+//--------------------------------//
+
+int gender()
+{
+    user_data obj;
+    char gender;
+    //float result;
+        cout<<"Enter your gender : "<<endl<<"Male (m) or Female (f)"<<endl;
+            cin >> gender;
+
+    switch(gender)
+        {
+        case 'm':
+        case 'M':
+            {
+                cout<<"Your BMR is = "<<obj.male_bmr<<" calories"<<endl;
+                    result = obj.male_bmr;
+                    break;
+            }
+        case 'f':
+        case 'F':
+            {
+                cout<<"Your BMR is = "<<obj.female_bmr<<" calories"<<endl;
+                    result = obj.female_bmr;
+
+                    break;
+            }
+       default:
+            {
+                cout<<"No valid input"<<endl;
+                    break;
+            }
+        }
+    return result;
+}
+//--------------------------------//
+int payload()
+{
+    int work_type;
+        cout<<"\nHow much do you work per week?"<<endl;
+            cout<<"\nLazy lads : 1"<<endl;
+            cout<<"Light, 2-3 days a week : 2"<<endl;
+            cout<<"Average, 2-3 days a week : 3"<<endl;
+            cout<<"Average, everyday of a week : 4"<<endl;
+            cout<<"Regular athlete : 5"<<endl;
+                    cin>>work_type;
+
+    switch(work_type)
+        {
+        case 1:
+            {
+                cout<<"\n---> You need "<<result*1.2<<" <<--------- calories intake everyday"<<endl;
+                    break;
+            }
+        case 2:
+            {
+                cout<<"\n---> You need "<<result*1.375<<" <<--------- calories intake everyday"<<endl;
+                    break;
+            }
+        case 3:
+            {
+                cout<<"\n---> You need "<<result*1.55<<" <<--------- calories intake everyday"<<endl;
+                    break;
+            }
+        case 4:
+            {
+                cout<<"\n---> You need "<<result*1.725<<" <<--------- calories intake everyday"<<endl;
+                    break;
+            }
+        case 5:
+            {
+                cout<<"\n---> You need "<<result*1.9<<" <<--------- calories intake everyday"<<endl;
+                    break;
+            }
+
+        }
+}
+
+//--------------------------------//
+int user_data_ref()
+{
+    user_data object_ud;
+        object_ud.user_data_F();
+}
+
+
